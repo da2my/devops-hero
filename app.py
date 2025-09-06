@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello DevOps Hero"
+    return "DevOps test"
