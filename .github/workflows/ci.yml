@@ -21,10 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: sonarsource/sonarqube-scan-action@v2
+        with:
+          fetch-depth: 0  # Necesario para que SonarQube obtenga el historial completo de Git
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
+          # SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
 
   build-docker:
     needs: [lint-test-sonar]
