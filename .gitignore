@@ -1,2 +1,54 @@
+# ## Archivos autogenerados de Python ##
+# Ignora los directorios de caché de bytecode
+__pycache__/
+*.pyc
+
+# Ignora los directorios de distribución/instalación
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ## Entornos virtuales ##
+# Ignora la carpeta del entorno virtual (convención estándar)
 .venv/
+# Nombres alternativos comunes para entornos virtuales
+venv/
+env/
+
+# ## Archivos de secretos y configuración local ##
+# Ignora el archivo de variables de entorno locales
 .env
+
+# ## Logs y bases de datos locales ##
+# Ignora archivos de log
+*.log
+logs/
+
+# Ignora bases de datos SQLite de prueba o desarrollo
+*.sqlite3
+*.db
+
+# ## Archivos de IDE y editores de código ##
+# Ignora configuraciones específicas de Visual Studio Code
+.vscode/
+
+# Ignora configuraciones específicas de PyCharm
+.idea/
+
+# ## Archivos de sistema operativo ##
+# Ignora archivos de metadatos de macOS
+.DS_Store
+
+# Ignora archivos de metadatos de Windows
+Thumbs.db
+ehthumbs.db
+
+# ## Archivos de dependencias y reportes ##
+# Ignora instalaciones locales de dependencias
+pip-freeze.txt
+requirements.txt.bak
+
+# Ignora reportes de cobertura de código
+.coverage
+htmlcov/
