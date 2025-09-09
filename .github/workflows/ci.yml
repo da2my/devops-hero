@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install flake8 pytest
-      - run: flake8 app.py
+      - run: flake8 .
       - run: pytest
 
   sonar:
