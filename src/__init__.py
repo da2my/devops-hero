@@ -9,7 +9,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Registrar el Blueprint desde el módulo 'main' necesaria en Flask para evitar importaciones circulares.
+    # Registrar el Blueprint desde el módulo 'main' necesaria en Flask
+    # para evitar importaciones circulares.
     from .main.routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
