@@ -23,9 +23,9 @@ class ProductionConfig(Config):
     # Ejemplo: DATABASE_URI = os.environ.get('DATABASE_URI')
     pass
 
-# class TestingConfig(Config):
-#     """Configuración para testing."""
-#     pass
+class TestingConfig(Config):
+    """Configuración para testing."""
+    pass
 
 # Diccionario para mapear nombres a clases
 # config_by_name = {

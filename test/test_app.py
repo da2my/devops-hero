@@ -1,6 +1,6 @@
 import pytest
-from src import create_app
 from config import TestingConfig
+from src import create_app
 
 @pytest.fixture
 def client():

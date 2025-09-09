@@ -1,0 +1,9 @@
+[project]
+name = "devops-hero"
+version = "0.1.0"
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = "."
