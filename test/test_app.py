@@ -31,4 +31,3 @@ def test_hello_route(client):
     # Verificamos que la respuesta sea la correcta
     assert response.status_code == 200
     assert b"DevOps test desde la nueva estructura!" in response.data
-    
