@@ -22,4 +22,17 @@ COPY --from=builder /install /install
 COPY . .
 
 # Comando para ejecutar la aplicación con Gunicorn (servidor de producción)
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]
+#binario directo en caso de fallback
+# CMD ["/install/bin/gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
+
+#usa ENTRYPOINT de distroless
+# CMD ["-m", "gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
+
+#definir propio ENTRYPOINT
+#Independiente de cambios en la imagen base.
+ENTRYPOINT ["/usr/bin/python3.11"]
+CMD ["-m", "gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
+
+
+
+
