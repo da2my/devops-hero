@@ -1,7 +1,17 @@
 # Etapa 1: build
 FROM python:3.11-slim-bookworm AS builder
 
+# Evita bytecode y buffers en logs
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
 WORKDIR /app
+
+# Instalar dependencias del sistema mínimas (por si algunas libs lo requieren)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    gcc \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
@@ -12,8 +22,9 @@ FROM gcr.io/distroless/python3-debian12
 
 WORKDIR /app
 
-#ruta de Python para que encuentre los paquetes instalados
-ENV PYTHONPATH=/install/lib/python3.11/site-packages
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/install/lib/python3.11/site-packages
 
 # Copia las dependencias desde la etapa 'builder'
 COPY --from=builder /install /install
@@ -28,9 +39,9 @@ COPY . .
 #usa ENTRYPOINT de distroless
 # CMD ["-m", "gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
 
-#definir propio ENTRYPOINT
-#Independiente de cambios en la imagen base.
+# ENTRYPOINT explícito → controlamos siempre qué binario se arranca
 ENTRYPOINT ["/usr/bin/python3.11"]
+# CMD → lo que se pasa al intérprete Python
 CMD ["-m", "gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
 
 
